@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroValue</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-green-50 text-gray-800">
+    <!-- SVG Vine Trail with Flowers -->
+    <svg class="fixed left-0 top-0 h-full z-10" viewBox="0 0 100 1000" preserveAspectRatio="xMidYMin meet">
+        <path d="M50,0 C50,100 40,200 60,300 C40,400 60,500 50,600 C60,700 40,800 50,1000" stroke="#4B8B3B" stroke-width="4" fill="none" class="vine-path" />
+    </svg>
+
+    <!-- Falling Leaves and Flowers Aligned to Vine Path -->
+    <!-- <div class="pointer-events-none fixed inset-0 z-10">
+        <div class="falling left-[49.5%] top-[-5%]">🍃</div>
+        <div class="falling left-[50.2%] top-[-10%]">🌸</div>
+        <div class="falling left-[50%] top-[-15%]">🍃</div>
+        <div class="falling left-[49.7%] top-[-20%]">🌸</div>
+        <div class="falling left-[50.1%] top-[-25%]">🍃</div>
+        <div class="falling left-[49.9%] top-[-30%]">🌸</div>
+        <div class="falling left-[50%] top-[-35%]">🍃</div>
+        <div class="falling left-[49.8%] top-[-40%]">🌸</div>
+        <div class="falling left-[50.2%] top-[-45%]">🍃</div>
+        <div class="falling left-[49.5%] top-[-50%]">🌸</div>
+        <div class="falling left-[50%] top-[-55%]">🍃</div>
+        <div class="falling left-[49.7%] top-[-60%]">🌸</div>
+        <div class="falling left-[50.1%] top-[-65%]">🍃</div>
+        <div class="falling left-[49.9%] top-[-70%]">🌸</div>
+        <div class="falling left-[50%] top-[-75%]">🍃</div>
+        <div class="falling left-[49.8%] top-[-80%]">🌸</div>
+    </div> -->
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto p-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-white flex items-center gap-2">
+                🌿 <span>AgroValue</span>
+            </h1>
+            <ul class="flex space-x-4 justify-end w-full">
+                <li><a href="#home" class="text-white hover:text-green-300">Home</a></li>
+                <li><a href="#prices" class="text-white hover:text-green-300">Prices</a></li>
+                <li><a href="#learn" class="text-white hover:text-green-300">Learn</a></li>
+                <li><a href="#chatbot" class="text-white hover:text-green-300">Chatbot</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section id="home" class="h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('assets/images/home.png');">
+        <div class="text-center text-white" data-animate="animate-fade-up">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">India is a Nation Built by Farmers. It's Time They Get Their Due.</h1>
+            <p class="text-lg md:text-xl mb-6">Empowering farmers with knowledge and tools for a better tomorrow.</p>
+            <a href="#prices" class="bg-green-700 text-white px-6 py-3 rounded-lg hover:bg-green-800">Explore More</a>
+        </div>
+    </section>
+
+    <!-- Enhanced Market Price Section -->
+    <section id="prices" class="h-screen bg-white flex flex-col justify-center items-center px-6">
+        <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="text-center md:text-left" data-animate="animate-fade-left">
+                <h2 class="text-3xl font-bold mb-4">Know the Real Price Before You Sell.</h2>
+                <p class="text-lg mb-6">Get live market prices for your crops and make informed decisions.</p>
+                <a href="#" class="bg-green-700 text-white px-6 py-3 rounded-lg hover:bg-green-800">Check Current Prices</a>
+            </div>
+            <div class="flex justify-center" data-animate="animate-fade-right">
+                <img src="assets/images/farmer-checking-prices.png" alt="Farmer checking prices on a mobile device" class="w-full md:w-3/4 rounded-lg shadow-lg object-cover">
+            </div>
+        </div>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+            <div class="text-center bg-green-100 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Select Your Crop</h3>
+                <p>Choose from a variety of crops to get accurate pricing information.</p>
+            </div>
+            <div class="text-center bg-green-100 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Choose State & Market</h3>
+                <p>Filter prices based on your location and market preferences.</p>
+            </div>
+            <div class="text-center bg-green-100 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">See Live Prices</h3>
+                <p>Access real-time minimum, maximum, and modal prices.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Learn Section -->
+    <section id="learn" class="h-screen flex flex-col items-center justify-center bg-green-100 px-6">
+        <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="text-center md:text-left" data-animate="animate-fade-left">
+                <h2 class="text-3xl font-bold mb-4">From Soil to Sale — Learn Everything You Need.</h2>
+                <p class="text-lg mb-6">Explore our learning hub for tips and best practices.</p>
+                <a href="#" class="bg-green-700 text-white px-6 py-3 rounded-lg hover:bg-green-800">Explore Learning Hub</a>
+            </div>
+            <div class="flex justify-center" data-animate="animate-fade-right">
+                <img src="assets/images/farmer_reading_guide.png" alt="Farmer reading a guide" class="w-full md:w-3/4 rounded-lg shadow-lg object-cover">
+            </div>
+        </div>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+            <div class="text-center bg-white p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Soil Requirements</h3>
+                <p>Understand the best soil types for your crops.</p>
+            </div>
+            <div class="text-center bg-white p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Best Season</h3>
+                <p>Learn the optimal seasons for planting and harvesting.</p>
+            </div>
+            <div class="text-center bg-white p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Irrigation</h3>
+                <p>Discover effective irrigation techniques for better yield.</p>
+            </div>
+            <div class="text-center bg-white p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Fertilizer</h3>
+                <p>Choose the right fertilizers for healthy crop growth.</p>
+            </div>
+            <div class="text-center bg-white p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Pest Control</h3>
+                <p>Protect your crops from pests with eco-friendly solutions.</p>
+            </div>
+            <div class="text-center bg-white p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Yield Tips</h3>
+                <p>Maximize your yield with expert tips and tricks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Chatbot Section -->
+    <section id="chatbot" class="h-screen flex flex-col items-center justify-center bg-white px-6">
+        <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="text-center md:text-left" data-animate="animate-fade-left">
+                <h2 class="text-3xl font-bold mb-4">Ask Me Anything — Your Personal Farming Assistant</h2>
+                <p class="text-lg mb-6">Get instant answers to your farming questions.</p>
+                <ul class="list-disc list-inside mb-6 space-y-2">
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-700">✔️</span>
+                        <span>Always available</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-700">✔️</span>
+                        <span>Simple language</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-700">✔️</span>
+                        <span>Free to use</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex justify-center" data-animate="animate-fade-right">
+                <img src="assets/images/chatbot.png" alt="Chatbot assistant" class="w-full md:w-3/4 rounded-lg shadow-lg object-cover">
+            </div>
+        </div>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
+            <div class="text-center bg-green-100 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">24/7 Assistance</h3>
+                <p>Get help anytime, anywhere with our chatbot.</p>
+            </div>
+            <div class="text-center bg-green-100 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Expert Advice</h3>
+                <p>Receive expert farming tips tailored to your needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-green-700 text-white py-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <!-- <img src="assets/images/g4.png" alt="AgroValue Logo" class="w-12 h-12 rounded-full"> -->
+                <h3 class="text-lg font-bold">🌿 <span>AgroValue</span></h3>
+            </div>
+            <p class="text-center md:text-right mt-4 md:mt-0">Empowering farmers with knowledge and tools for a better tomorrow. © 2025 AgroValue. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
