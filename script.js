@@ -1,5 +1,15 @@
 // JavaScript for AgroValue animations
 
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('nav');
+    if (window.scrollY > 0) {
+        navbar.style.opacity = '0.9'; // Less opacity
+    } else {
+        navbar.style.opacity = '1'; // Full opacity
+    }
+});
+
+
 // Example: Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -52,4 +62,14 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('[data-animate]').forEach((el) => {
     el.style.opacity = '0'; // Hide elements initially
     observer.observe(el);
+});
+
+// Fix Hamburger menu toggle logic
+const hamburgerButton = document.querySelector('[data-collapse-toggle]');
+const navbarMenu = document.getElementById('navbar-default');
+
+hamburgerButton.addEventListener('click', () => {
+    const isExpanded = hamburgerButton.getAttribute('aria-expanded') === 'true';
+    hamburgerButton.setAttribute('aria-expanded', !isExpanded);
+    navbarMenu.classList.toggle('hidden');
 });

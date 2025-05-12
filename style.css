@@ -9,8 +9,10 @@ body {
     animation: fall 10s linear infinite;
     opacity: 0.8;
     font-size: 1.25rem;
-    left: 1.5% !important; /* Align with the vine's center */
-    transform: translateX(-50%); /* Center the elements horizontally */
+    left: 1.5% !important;
+    /* Align with the vine's center */
+    transform: translateX(-50%);
+    /* Center the elements horizontally */
 }
 
 @keyframes fall {
@@ -18,6 +20,7 @@ body {
         transform: translateY(-10%) rotate(0deg);
         opacity: 1;
     }
+
     100% {
         transform: translateY(120vh) rotate(360deg);
         opacity: 0;
@@ -30,6 +33,7 @@ body {
         opacity: 0;
         transform: translateY(40px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -41,6 +45,7 @@ body {
         opacity: 0;
         transform: translateX(-40px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -52,6 +57,7 @@ body {
         opacity: 0;
         transform: translateX(40px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -81,16 +87,19 @@ body {
 
 /* Updated Navbar styles with glassmorphism effect */
 nav {
-    background: rgba(76, 175, 80, 0.75); /* Semi-transparent green */
-    backdrop-filter: blur(10px); /* Glassmorphism blur effect */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(76, 175, 80, 0.75);
+    /* Semi-transparent green */
+    backdrop-filter: blur(10px);
+    /* Glassmorphism blur effect */
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background 0.3s ease-in-out;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    /* Ensures it stays above other elements */
 }
 
-nav:hover {
-    background: linear-gradient(90deg, #2E7D32, #4CAF50);
-}
 
 nav .container {
     display: flex;
@@ -99,17 +108,22 @@ nav .container {
     position: relative;
 }
 
-nav ul {
-    position: absolute;
-    right: 1rem;
+/* Center align the navbar list vertically */
+nav .max-w-screen-xl {
     display: flex;
-    gap: 1rem;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Subtle hover animation for nav links */
 nav ul li a {
     color: white;
-    font-weight: bold;
+    text-decoration: solid;
     text-transform: uppercase;
     transition: color 0.3s ease;
     position: relative;
@@ -135,16 +149,47 @@ nav ul li a:hover::after {
 }
 
 /* Styles for enhanced section cards */
-section .bg-green-100, section .bg-white {
+section .bg-green-100,
+section .bg-white {
     padding: 1rem;
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-section .bg-green-100:hover, section .bg-white:hover {
+section .bg-green-100:hover,
+section .bg-white:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Chatbot Section Enhancements */
+#chatbot {
+    background-color: #f9f9f9;
+}
+
+#chatbot h2 {
+    color: #2d3748;
+}
+
+#chatbot p {
+    color: #4a5568;
+}
+
+#chatbot ul li span:first-child {
+    font-size: 1.25rem;
+}
+
+#chatbot img {
+    transition: transform 0.3s ease-in-out;
+}
+
+#chatbot img:hover {
+    transform: scale(1.05);
+}
+
+#chatbot .shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Add any additional custom styles here */
