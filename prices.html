@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prices - AgroValue</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="prices.css">
+</head>
+<body class="bg-green-50 text-gray-800">
+    <nav class="bg-green-700 border-gray-200">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">🌿 <span>AgroValue</span></span>
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500" aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-green-600 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-green-700">
+                    <li>
+                        <a href="index.html" class="block py-2 px-3 text-white bg-green-800 rounded-sm md:bg-transparent md:text-white md:p-0" aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a href="prices.html" class="block py-2 px-3 text-white rounded-sm hover:bg-green-600 md:hover:bg-transparent md:border-0 md:hover:text-green-300 md:p-0">Prices</a>
+                    </li>
+                    <li>
+                        <a href="https://learnagricult.netlify.app/" class="block py-2 px-3 text-white rounded-sm hover:bg-green-600 md:hover:bg-transparent md:border-0 md:hover:text-green-300 md:p-0">Learn</a>
+                    </li>
+                    <li>
+                        <a href="chatbot.html" class="block py-2 px-3 text-white rounded-sm hover:bg-green-600 md:hover:bg-transparent md:border-0 md:hover:text-green-300 md:p-0">Chatbot</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="block py-2 px-3 text-white rounded-sm hover:bg-green-600 md:hover:bg-transparent md:border-0 md:hover:text-green-300 md:p-0">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="min-h-screen bg-white py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl font-bold text-green-700 mb-8">Live Crop Prices and Trends</h1>
+            <div class="overflow-x-auto mb-8">
+                <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead class="bg-green-100">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Crop Name</th>
+                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Region</th>
+                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Price (₹)</th>
+                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Date Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t">
+                            <td class="px-6 py-4 text-sm text-gray-600">Wheat</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">Punjab</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">₹2,000</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">2025-05-12</td>
+                        </tr>
+                        <tr class="border-t">
+                            <td class="px-6 py-4 text-sm text-gray-600">Rice</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">West Bengal</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">₹1,800</td>
+                            <td class="px-6 py-4 text-sm text-gray-600">2025-05-12</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <canvas id="priceChart" class="w-full h-64"></canvas>
+            </div>
+        </div>
+    </section>
+    <script>
+        const ctx = document.getElementById('priceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+                datasets: [{
+                    label: 'Wheat Prices',
+                    data: [2000, 2100, 2050, 2200, 2150, 2300, 2250],
+                    borderColor: 'rgba(34, 197, 94, 1)',
+                    backgroundColor: 'rgba(34, 197, 94, 0.2)',
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
