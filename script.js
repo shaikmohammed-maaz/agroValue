@@ -1,13 +1,13 @@
 // JavaScript for AgroValue animations
 
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('nav');
-    if (window.scrollY > 0) {
-        navbar.style.opacity = '0.9'; // Less opacity
-    } else {
-        navbar.style.opacity = '1'; // Full opacity
-    }
-});
+// window.addEventListener('scroll', () => {
+//     const navbar = document.querySelector('nav');
+//     if (window.scrollY > 0) {
+//         navbar.style.opacity = '0.9'; // Less opacity
+//     } else {
+//         navbar.style.opacity = '1'; // Full opacity
+//     }
+// });
 
 
 // Example: Smooth scrolling for anchor links
