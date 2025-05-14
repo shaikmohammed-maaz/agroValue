@@ -76,10 +76,67 @@
             <p class="text-lg text-gray-600 mb-6">Ask anything about your crops, market prices, or farming tips.</p>
             <div class="flex items-center space-x-4">
                 <input type="text" placeholder="Type your question here..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Send</button>
+                <button id="send-button" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Send</button>
             </div>
         </div>
     </section>
     <script src="script.js"></script>
+    <script src="chatbot-api.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("DOMContentLoaded event fired"); // Debugging log to confirm script execution
+
+            const button = document.querySelector("#send-button");
+            if (!button) {
+                console.error("Button not found");
+                return;
+            }
+
+            console.log("Button found and event listener attached");
+
+            button.addEventListener("click", async () => {
+                console.log("Button clicked"); // Debugging log to confirm click
+
+                const userInput = document.querySelector("input").value;
+                if (!userInput.trim()) return;
+
+                const response = await fetchChatbotResponse(userInput);
+                console.log(response);
+
+                const responseContainer = document.createElement("div");
+                responseContainer.className = "mt-4 p-4 bg-green-100 rounded-lg shadow-md space-y-4";
+
+                // Parse and format the response
+                const sections = response.split('\n\n');
+                sections.forEach(section => {
+                    if (section.startsWith('###')) {
+                        const heading = document.createElement('h3');
+                        heading.className = "text-xl font-bold text-green-700";
+                        heading.textContent = section.replace('### ', '');
+                        responseContainer.appendChild(heading);
+                    } else if (section.startsWith('1.') || section.startsWith('-')) {
+                        const list = document.createElement('ul');
+                        list.className = "list-disc list-inside";
+                        const items = section.split('\n');
+                        items.forEach(item => {
+                            if (item.trim()) {
+                                const listItem = document.createElement('li');
+                                listItem.textContent = item.replace(/^\d+\.\s|-\s/, '');
+                                list.appendChild(listItem);
+                            }
+                        });
+                        responseContainer.appendChild(list);
+                    } else {
+                        const paragraph = document.createElement('p');
+                        paragraph.className = "text-gray-700";
+                        paragraph.textContent = section;
+                        responseContainer.appendChild(paragraph);
+                    }
+                });
+
+                document.querySelector(".max-w-3xl").appendChild(responseContainer);
+            });
+        });
+    </script>
 </body>
 </html>

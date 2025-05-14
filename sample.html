@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="click">click me </button>
+    <p id="output"></p>
+
+    <script>
+        document.getElementById('click').addEventListener('click', async function() {
+            const outputElement = document.getElementById('output');
+            try {
+                const response = await fetch('http://127.0.0.1:8000/groq-tomato-analysis?query=test');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                outputElement.innerText = data.response;
+            } catch (error) {
+                console.error('Error fetching API response:', error);
+                outputElement.innerText = 'Failed to fetch API response.';
+            }
+        });
+    </script>
+</body>
+</html>
