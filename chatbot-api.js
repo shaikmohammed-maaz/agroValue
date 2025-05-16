@@ -1,15 +1,15 @@
 async function fetchChatbotResponse(userInput) {
-      
-    const apiUrl = `http://127.0.0.1:8000/groq-tomato-analysis?query=${encodeURIComponent(userInput)}`;
+    const apiUrl = "http://127.0.0.1:8000/groq-api";
 
     console.log("Sending request to API with input:", userInput);
 
     try {
         const response = await fetch(apiUrl, {
-            method: "GET",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
+            body: JSON.stringify({ text: userInput }), // Sending input as JSON body
         });
 
         console.log("Received response from API:", response);

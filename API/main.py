@@ -6,6 +6,7 @@ from sklearn.preprocessing import MinMaxScaler
 from fastapi.middleware.cors import CORSMiddleware
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
+from pydantic import BaseModel
 import requests
 from io import BytesIO
 import base64
@@ -19,6 +20,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+class Prompt(BaseModel):
+    text: str
 
 @app.get("/")
 def read_root():
@@ -96,8 +100,8 @@ def predict_potato_prices():
     })
 
 
-@app.get("/groq-api")
-def groq_api():
+@app.post("/groq-api")
+def groq_api(prompt: Prompt):
     # Replace this with your actual Groq API key
     api_key = "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"
 
@@ -111,7 +115,7 @@ def groq_api():
     payload = {
         "model": "meta-llama/llama-4-maverick-17b-128e-instruct",  # or use 'llama3-70b-8192' or 'mixtral-8x7b-32768'
         "messages": [
-            {"role": "user", "content": "Give me some details about IITM BS degree?."}
+            {"role": "user", "content": prompt.text}
         ],
         "temperature": 0.7
     }

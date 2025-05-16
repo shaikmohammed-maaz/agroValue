@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,102 +10,100 @@
     <style>
         .bouncing-ball {
             position: absolute;
-            top: -50px; /* Adjusted for better alignment */
-            left: 3%; /* Center horizontally */
-            transform: translateX(-50%); /* Center alignment */
-            width: 40px; /* Responsive size */
-            height: 40px; /* Responsive size */
-            background-color: #38a169; /* Green color */
+            top: -50px;
+            left: 3%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: #38a169;
             border-radius: 50%;
             animation: bounce 2s infinite;
         }
 
         @keyframes bounce {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translate(-50%, 0);
             }
+
             50% {
-                transform: translate(-50%, -20px); /* Adjusted bounce height */
+                transform: translate(-50%, -20px);
             }
         }
 
         @media (max-width: 768px) {
             .bouncing-ball {
-                width: 30px; /* Smaller size for smaller screens */
+                width: 30px;
                 height: 30px;
             }
         }
+
+        /* Add fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
     </style>
 </head>
+
 <body class="bg-green-50 text-gray-800">
     <nav class="bg-green-700 border-gray-200">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">🌿 <span>AgroValue</span></span>
+                <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">🌿
+                    <span>AgroValue</span></span>
             </a>
-            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500" aria-controls="navbar-default" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-                </svg>
-            </button>
-            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-green-600 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-green-700">
-                    <li>
-                        <a href="index.html" class="block py-2 px-3 text-white bg-green-800 rounded-sm md:bg-transparent md:text-white md:p-0" aria-current="page">Home</a>
-                    </li>
-                    <li>
-                        <a href="prices.html" class="block py-2 px-3 text-white rounded-sm hover:bg-green-600 md:hover:bg-transparent md:border-0 md:hover:text-green-300 md:p-0">Prices</a>
-                    </li>
-                    <li>
-                        <a href="https://learnagricult.netlify.app/" class="block py-2 px-3 text-white rounded-sm hover:bg-green-600 md:hover:bg-transparent md:border-0 md:hover:text-green-300 md:p-0">Learn</a>
-                    </li>
-                    <li>
-                        <a href="chatbot.html" class="block py-2 px-3 text-white rounded-sm hover:bg-green-600 md:hover:bg-transparent md:border-0 md:hover:text-green-300 md:p-0">Chatbot</a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="block py-2 px-3 text-white rounded-sm hover:bg-green-600 md:hover:bg-transparent md:border-0 md:hover:text-green-300 md:p-0">Contact</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
     <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 to-green-300">
         <div class="max-w-3xl w-full bg-white rounded-lg shadow-lg p-8 relative">
-            <div class="bouncing-ball"></div> <!-- Updated class for the ball -->
+            <div class="bouncing-ball"></div>
             <h1 class="text-3xl font-bold text-green-700 mb-4">Ask Anything About Farming</h1>
             <p class="text-lg text-gray-600 mb-6">Ask anything about your crops, market prices, or farming tips.</p>
             <div class="flex items-center space-x-4">
-                <input type="text" placeholder="Type your question here..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                <button id="send-button" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Send</button>
+                <input type="text" placeholder="Type your question here..."
+                    class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <button id="send-button"
+                    class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">Send</button>
             </div>
         </div>
     </section>
-    <script src="script.js"></script>
     <script src="chatbot-api.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            console.log("DOMContentLoaded event fired"); // Debugging log to confirm script execution
-
             const button = document.querySelector("#send-button");
             if (!button) {
                 console.error("Button not found");
                 return;
             }
 
-            console.log("Button found and event listener attached");
-
             button.addEventListener("click", async () => {
-                console.log("Button clicked"); // Debugging log to confirm click
-
                 const userInput = document.querySelector("input").value;
                 if (!userInput.trim()) return;
 
                 const response = await fetchChatbotResponse(userInput);
-                console.log(response);
 
+                // Clear the previous response
+                const existingResponse = document.querySelector(".response-container");
+                if (existingResponse) {
+                    existingResponse.remove();
+                }
+
+                // Create a new response container
                 const responseContainer = document.createElement("div");
-                responseContainer.className = "mt-4 p-4 bg-green-100 rounded-lg shadow-md space-y-4";
+                responseContainer.className = "response-container mt-4 p-4 bg-green-100 rounded-lg shadow-md space-y-4 animate-fade-in";
 
                 // Parse and format the response
                 const sections = response.split('\n\n');
@@ -121,7 +120,8 @@
                         items.forEach(item => {
                             if (item.trim()) {
                                 const listItem = document.createElement('li');
-                                listItem.textContent = item.replace(/^\d+\.\s|-\s/, '');
+                                // Replace asterisks with <strong> tags for bold text
+                                listItem.innerHTML = item.replace(/^\d+\.\s|-\s/, '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
                                 list.appendChild(listItem);
                             }
                         });
@@ -129,14 +129,20 @@
                     } else {
                         const paragraph = document.createElement('p');
                         paragraph.className = "text-gray-700";
-                        paragraph.textContent = section;
+                        // Replace asterisks with <strong> tags for bold text
+                        paragraph.innerHTML = section.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
                         responseContainer.appendChild(paragraph);
                     }
                 });
 
+                // Append the new response container
                 document.querySelector(".max-w-3xl").appendChild(responseContainer);
+
+                // Clear the input field
+                document.querySelector("input").value = "";
             });
         });
     </script>
 </body>
+
 </html>
