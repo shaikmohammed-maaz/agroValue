@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AgroValue - Price Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- ✅ Main Navigation Header -->
+  <header class="main-header">
+    <div class="nav-container">
+      <div class="logo-section">
+        <span class="logo-text">🌿AgroValue</span>
+      </div>
+      <nav class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="#">Price</a>
+        <a href="../learn/index.html">Learn</a>
+        <a href="#">Chatbot</a>
+      </nav>
+      <div class="hamburger" id="menuBtn">&#9776;</div>
+    </div>
+  </header>
+
+  <!-- ✅ Sub Header with Search + Language Toggle -->
+<section class="top-controls">
+  <input type="text" id="searchInput" placeholder="Search crops..." />
+  <div class="button-group">
+    <button onclick="toggleLanguage()" id="langToggle">हिंदी</button>
+    <button id="searchBtn">Search</button>
+  </div>
+</section>
+
+
+  <!-- ✅ Main Content -->
+  <main>
+    <div id="cropList"></div>
+
+    <div id="analysisSection" class="analysis hidden">
+      <button class="close-btn" onclick="closeAnalysis()">×</button>
+      <h2 id="analysisTitle"></h2>
+      <p id="priceInfo"></p>
+      <p id="trendVolatility"></p>
+      <canvas id="priceChart"></canvas>
+      <p id="summary"></p>
+    </div>
+  </main>
+
+  <!-- ✅ Scripts -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("menuBtn").addEventListener("click", () => {
+      document.getElementById("navLinks").classList.toggle("active");
+    });
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      displayCropList(e.target.value);
+    });
+  </script>
+</body>
+</html>
