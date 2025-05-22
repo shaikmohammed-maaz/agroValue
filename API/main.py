@@ -102,42 +102,38 @@ def predict_potato_prices():
 
 @app.post("/groq-api")
 def groq_api(prompt: Prompt):
-    # Replace this with your actual Groq API key
-    api_key = "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"
-
+    api_key = "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"
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
-
     url = "https://api.groq.com/openai/v1/chat/completions"
-
     payload = {
-        "model": "meta-llama/llama-4-maverick-17b-128e-instruct",  # or use 'llama3-70b-8192' or 'mixtral-8x7b-32768'
+        "model": "meta-llama/llama-4-maverick-17b-128e-instruct",
         "messages": [
             {"role": "user", "content": prompt.text}
         ],
         "temperature": 0.7
     }
-
     response = requests.post(url, headers=headers, json=payload)
     reply = response.json()
+    # Robust error handling
+    if "choices" in reply and reply["choices"]:
+        return {"response": reply["choices"][0]["message"]["content"]}
+    else:
+        error_msg = reply.get("error", {}).get("message", "Unknown error from Groq API")
+        return {"response": f"Groq API Error: {error_msg}"}
 
-    # Return model response
-    return {"response": reply["choices"][0]["message"]["content"]}
 
 @app.get("/groq-tomato-analysis")
 def groq_tomato_analysis():
-    # Replace this with your actual Groq API key
-    api_key = "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"
-
+    api_key = "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"
+    ""
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
-
     url = "https://api.groq.com/openai/v1/chat/completions"
-
     content = """You are an agriculture market analyst LLM.
 
     Below is the data for the last 30 days vegetable price (in ₹/kg) for **Tomato**, along with recent agricultural news and weather forecast.
@@ -152,9 +148,9 @@ def groq_tomato_analysis():
     [22, 24, 25, 27, 28, 26, 25, 24, 26, 28, 30, 31, 32, 35, 34, 36, 38, 40, 42, 41, 39, 38, 37, 36, 35, 36, 38, 39, 40, 42]
 
     📰 AGRICULTURE NEWS:
-    1. \"Heavy rainfall in Nashik and Pune disrupted harvesting schedules for tomatoes over the last week.\"
-    2. \"Farmers' unions in Andhra Pradesh plan a 2-day protest over fertilizer pricing next week.\"
-    3. \"Tomato production expected to be below average in Maharashtra due to pest attack in 2 districts.\"
+    1. "Heavy rainfall in Nashik and Pune disrupted harvesting schedules for tomatoes over the last week."
+    2. "Farmers' unions in Andhra Pradesh plan a 2-day protest over fertilizer pricing next week."
+    3. "Tomato production expected to be below average in Maharashtra due to pest attack in 2 districts."
 
     🌤️ WEATHER FORECAST (Next 5 days):
     - Day 1: Rainy in southern Tamil Nadu, cloudy in Maharashtra
@@ -170,17 +166,18 @@ def groq_tomato_analysis():
     - Expected tomato price for next 5 days (₹/kg)
     - Justify your prediction using trend, weather, and news
     """
-
     payload = {
-        "model": "meta-llama/llama-4-maverick-17b-128e-instruct",  # or use 'llama3-70b-8192' or 'mixtral-8x7b-32768'
+        "model": "meta-llama/llama-4-maverick-17b-128e-instruct",
         "messages": [
             {"role": "user", "content": content}
         ],
         "temperature": 0.7
     }
-
     response = requests.post(url, headers=headers, json=payload)
     reply = response.json()
-
-    # Return model response
-    return {"response": reply["choices"][0]["message"]["content"]}
+    # Robust error handling
+    if "choices" in reply and reply["choices"]:
+        return {"response": reply["choices"][0]["message"]["content"]}
+    else:
+        error_msg = reply.get("error", {}).get("message", "Unknown error from Groq API")
+        return {"response": f"Groq API Error: {error_msg}"}
