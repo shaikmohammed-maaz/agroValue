@@ -1,4 +1,6 @@
 # AgroValue
+## DEMO VIDEO
+- link to our product's video - https://drive.google.com/drive/folders/1u4qhoT_Qgf7L1bv-Fwo5-6rjCnDKNjmB?usp=sharing
 
 AgroValue is a responsive single-page website designed to empower farmers with knowledge and tools. Built using HTML, Tailwind CSS, and JavaScript, it features:
 
@@ -25,5 +27,4 @@ AgroValue is a responsive single-page website designed to empower farmers with k
 - Uses Tailwind CSS for styling.
 - Placeholder images from [Unsplash](https://source.unsplash.com/).
 
-## DEMO VIDEO
-- link to our product's video - https://drive.google.com/drive/folders/1u4qhoT_Qgf7L1bv-Fwo5-6rjCnDKNjmB?usp=sharing
+
